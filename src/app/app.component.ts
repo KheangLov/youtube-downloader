@@ -36,6 +36,6 @@ export class AppComponent implements OnDestroy {
         filter(value => !_.isEmpty(value)),
         takeUntil(this._onDestroy$)
       )
-      .subscribe(value => this.link = `http://localhost:3000/mp3?url=${value}`);
+      .subscribe(value => this.link = `https://calm-tor-71357.herokuapp.com/mp3?url=${value}`);
   }
 }

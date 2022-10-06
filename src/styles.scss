@@ -9,7 +9,8 @@
 // Be sure that you only ever include this mixin once!
 @include mat.core();
 
-@import "~bootstrap/scss/bootstrap";
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500;700&display=swap');
+@import "bootstrap/scss/bootstrap";
 
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
@@ -38,5 +39,8 @@ $youtube-downloader-material-theme: mat.define-dark-theme((
 
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background: #343434; height: 91vh; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background: #343434; }
+
+h1, h2, h3, h4, h5, h6, span, input, label, div, p, pre, strong, b, textarea, select {
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}

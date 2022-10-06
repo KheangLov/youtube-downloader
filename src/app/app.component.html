@@ -1,33 +1,9 @@
-<mat-toolbar class="px-3">
-  <div class="container">
-    <span>Youtube Downloader</span>
+<mat-toolbar class="toolbar sticky-top p-0">
+  <div class="container text-center text-md-start">
+    <img src="/assets/icons/icon-192x192.png" alt="icon-192x192.png" class="img-fluid icon me-2">
+    <span>YouTube Downloader</span>
   </div>
 </mat-toolbar>
-<div class="px-3 h-100">
-  <div class="container h-100">
-    <!-- <router-outlet></router-outlet> -->
-    <div class="d-flex justify-content-center align-items-center h-100">
-      <div class="w-100">
-        <h2 class="fw-bolder text-white text-center mb-3">Input link to download</h2>
-        <div class="d-flex justify-content-between align-items-center">
-          <mat-form-field appearance="outline" class="w-100 text-white">
-            <mat-label>Youtube link</mat-label>
-            <input matInput placeholder="Placeholder" [formControl]="ctrl">
-            <mat-hint>EX: https://youtube.com/watch?v=JI-P7Fb7hTo</mat-hint>
-            <mat-error *ngIf="ctrl.hasError('pattern')">
-              Url Pattern Invalid
-            </mat-error>
-            <a
-              *ngIf="isValidLink"
-              mat-icon-button
-              matSuffix
-              [href]="link"
-            >
-              <mat-icon>file_download</mat-icon>
-            </a>
-          </mat-form-field>
-        </div>
-      </div>
-    </div>
-  </div>
+<div class="container">
+  <router-outlet></router-outlet>
 </div>

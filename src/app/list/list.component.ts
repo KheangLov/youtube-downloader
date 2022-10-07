@@ -28,8 +28,10 @@ export class ListComponent {
     }).format(view);
   }
 
-  getUrl(url: string, type: string): string {
-    return `${environment.apiUrl}/${type}?url=${url}`;
+  url(url: string) {
+    this._apiService.postKeepIt(url).subscribe(keepIt => {
+      console.log(keepIt)
+    });
   }
 
   private _getSearch(): string {

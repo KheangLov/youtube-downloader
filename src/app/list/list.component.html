@@ -40,11 +40,11 @@
             </div>
           </mat-card-content>
           <mat-card-actions class="p-0">
-            <a mat-raised-button color="primary" class="w-100 py-1" [href]="getUrl(video.url, 'mp3')">
+            <a mat-raised-button color="primary" class="w-100 py-1" (click)="url(video.url)">
               <mat-icon>download</mat-icon>
               AUDIO
             </a>
-            <a mat-raised-button color="warn" class="w-100 py-1 mt-2 m-0" [href]="getUrl(video.url, 'mp4')">
+            <a mat-raised-button color="warn" class="w-100 py-1 mt-2 m-0" (click)="url(video.url)">
               <mat-icon>download</mat-icon>
               VIDEO
             </a>

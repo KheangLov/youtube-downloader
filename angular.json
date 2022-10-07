@@ -97,7 +97,8 @@
               "browserTarget": "youtube-downloader-material:build:production"
             },
             "development": {
-              "browserTarget": "youtube-downloader-material:build:development"
+              "browserTarget": "youtube-downloader-material:build:development",
+              "proxyConfig": "src/proxy.conf.json"
             }
           },
           "defaultConfiguration": "development"

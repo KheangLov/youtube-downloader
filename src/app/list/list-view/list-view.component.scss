@@ -1,0 +1,66 @@
+::ng-deep {
+  .card-list-custom {
+    p, span {
+      text-shadow: 1px 2px rgba(0, 0, 0, 0.4);
+    }
+  
+    .content {
+      padding-top: 2rem !important;
+      height: 200px !important;
+    }
+
+    .img-list-custom {
+      border-radius: 0 !important;
+      position: relative;
+      background-color: #000 !important;
+      width: 200px !important;
+      height: 200px !important;
+      object-fit: contain;
+      transform: scale(2);
+      transition: all ease-in-out 0.5s;
+    }
+
+    .image-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 200px !important;
+      height: 200px !important;
+      background-color: rgba(0, 0, 0, 0.4);
+      opacity: 0;
+      transition: all ease-in-out 0.5s;
+    }
+    
+    .icon-dott {
+      font-size: 10px !important;
+      height: 9px !important;
+      width: 10px !important;
+    }
+  
+    .text-list {
+      max-height: 60px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  
+    .bg-list-custom {
+      position: absolute;
+      top: 0;
+      z-index: -1;
+      height: 200px !important;
+      filter: blur(8px);
+      background-position: center center;
+      background-repeat: no-repeat;
+    }
+
+    &:hover, &:focus {
+      .img-list-custom {
+        transform: scale(1);
+      }
+
+      .image-overlay {
+        opacity: 1;
+      }
+    }
+  }  
+}

@@ -1,4 +1,4 @@
-<div class="my-3 text-white h-100">
+<div class="text-white h-100">
   <span *ngIf="isEmptyVideo" class="fs-6">
     Sorry no video was found from your search!
   </span>
@@ -16,40 +16,64 @@
   </div>
 
   <ng-template [ngIf]="!isEmptyVideo">
-    <div class="d-flex justify-content-between mb-3 align-items-center">
-      <a mat-icon-button routerLink="" class="me-3">
-        <mat-icon>arrow_back</mat-icon>
-      </a>
-      <h3 *ngIf="searchText" class="fw-bold m-0">Search result for: {{ searchText }}</h3>
+    <div class="d-flex justify-content-between align-items-center px-2 py-4 border-top border-bottom" style="max-height: 60px;">
+      <mat-form-field class="w-100 text-white mx-2" [hidden]="!isSearch">
+        <mat-label>Search</mat-label>
+        <input matInput [formControl]="ctrl" (keyup.enter)="enter()">
+      </mat-form-field>
+      <div [hidden]="isSearch">
+        <button
+          mat-icon-button
+          [matTooltip]="viewType.tooltip"
+          (click)="switchView()"
+        >
+          <mat-icon>{{ viewType.icon }}</mat-icon>
+        </button>
+        <button
+          mat-icon-button
+          [matTooltip]="file.tooltip"
+          (click)="changeFileType(file.type)"
+        >
+          <mat-icon>{{ file.icon }}</mat-icon>
+        </button>
+      </div>
+      <div>
+        <span [hidden]="isSearch">
+          <button mat-icon-button [matMenuTriggerFor]="sort">
+            <mat-icon>filter_list</mat-icon>
+          </button>
+          <mat-menu #sort="matMenu" xPosition="before" class="filter-menu">
+            <button
+              *ngFor="let filter of filterTypes;"
+              mat-menu-item
+              class="custom-menu-item"
+              [class.selected-filter]="isSelected(filter.value)"
+              (click)="filterData(filter)"
+            >
+              {{ filter.text }}
+            </button>
+          </mat-menu>
+        </span>
+
+        <button
+          mat-icon-button
+          matTooltip="Press enter to emit search immediately, or wait 3 seconds after inputed."
+          (click)="isSearch = !isSearch"
+        >
+          <mat-icon>search</mat-icon>
+        </button>
+      </div>
     </div>
-    <div class="row g-3">
-      <div *ngFor="let video of videoList" class="col-6 col-md-4 col-lg-3">
-        <mat-card class="p-3 overflow-hidden">
-          <a class="text-decoration-none" target="_blank" [href]="video.url">
-            <img mat-card-image class="img-custom" [src]="video.snippet.thumbnails.url" [alt]="video.title">
-          </a>
-          <mat-card-content>
-            <a class="text-white text-decoration-none" target="_blank" [href]="video.url">
-              <p class="text-truncate fw-bolder fs-5" [matTooltip]="video.title">
-                {{ video.title }}
-              </p>
-            </a>
-            <div class="d-flex justify-content-between text-truncate">
-              <span class="text-muted me-3">{{ getFormattedView(video.views) }} views</span>
-              <span class="text-muted">{{ video.snippet.publishedAt }}</span>
-            </div>
-          </mat-card-content>
-          <mat-card-actions class="p-0">
-            <a mat-raised-button color="primary" class="w-100 py-1" (click)="url(video.url)">
-              <mat-icon>download</mat-icon>
-              AUDIO
-            </a>
-            <a mat-raised-button color="warn" class="w-100 py-1 mt-2 m-0" (click)="url(video.url)">
-              <mat-icon>download</mat-icon>
-              VIDEO
-            </a>
-          </mat-card-actions>
-        </mat-card>
+    <div class="row g-0">
+      <div *ngFor="let video of videoList; let index = index; trackBy:trackById" [class]="viewType.cols">
+        <ng-template
+          appView
+          [component]="viewType.component"
+          [type]="viewType.type"
+          [video]="video"
+          [index]="index + 1"
+        >
+        </ng-template>
       </div>
     </div>
   </ng-template>

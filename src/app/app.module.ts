@@ -11,24 +11,26 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { MatDividerModule } from '@angular/material/divider';
+import { MatMenuModule } from '@angular/material/menu';
 import { ServiceWorkerModule } from '@angular/service-worker';
 
 import { AppComponent } from './app.component';
 import { environment } from '../environments/environment';
 import { ApiService } from './api.service';
-import { AppRoutingModule } from './app-routing.module';
 import { ListComponent } from './list/list.component';
-import { SearchComponent } from './search/search.component';
+import { CardViewComponent } from './list/card-view/card-view.component';
+import { ListViewComponent } from './list/list-view/list-view.component';
+import { ViewDirective } from './view.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
     ListComponent,
-    SearchComponent
+    CardViewComponent,
+    ListViewComponent,
+    ViewDirective
   ],
   imports: [
-    AppRoutingModule,
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
@@ -41,7 +43,7 @@ import { SearchComponent } from './search/search.component';
     MatCardModule,
     MatTooltipModule,
     MatProgressSpinnerModule,
-    MatDividerModule,
+    MatMenuModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,
       // Register the ServiceWorker as soon as the application is stable

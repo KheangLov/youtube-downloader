@@ -441,20 +441,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@angular/router@npm:^14.2.0":
-  version: 14.2.5
-  resolution: "@angular/router@npm:14.2.5"
-  dependencies:
-    tslib: ^2.3.0
-  peerDependencies:
-    "@angular/common": 14.2.5
-    "@angular/core": 14.2.5
-    "@angular/platform-browser": 14.2.5
-    rxjs: ^6.5.3 || ^7.4.0
-  checksum: 99027ce3e552facb5d428940ee1b24273e602b321212d25064c4c3fbf462affb3921acbf9776d31264863db1ddda3d62cde0db12c29c3b1f8811d5fb337f3764
-  languageName: node
-  linkType: hard
-
 "@angular/service-worker@npm:^14.2.0":
   version: 14.2.5
   resolution: "@angular/service-worker@npm:14.2.5"
@@ -9806,7 +9792,6 @@ __metadata:
     "@angular/material": 14.2.3
     "@angular/platform-browser": ^14.2.0
     "@angular/platform-browser-dynamic": ^14.2.0
-    "@angular/router": ^14.2.0
     "@angular/service-worker": ^14.2.0
     "@types/jasmine": ~4.0.0
     "@types/lodash": ^4.14.186

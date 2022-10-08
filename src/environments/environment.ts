@@ -4,8 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'https://youtube-downloader-api-black.vercel.app',
-  apiKeepSaveIt: 'https://keepsaveit.com/api'
+  apiUrl: 'http://localhost:3000',
 };
 
 /*

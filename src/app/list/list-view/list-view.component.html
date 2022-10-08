@@ -1,0 +1,52 @@
+<div
+  class="d-flex rounded-0 shadow-none card-list-custom w-100 border-bottom"
+  [class.border-end]="isAddEndBorder"
+>
+  <div class="flex-shrink-0 overflow-hidden position-relative">
+    <img class="img-list-custom img-fluid" [src]="video.image" [alt]="video.title">
+    <div class="image-overlay d-flex align-items-center justify-content-center">
+      <a
+        mat-mini-fab
+        color="basic"
+        class="button-custom text-white"
+        target="_blank"
+        [href]="video.url"
+      >
+        <mat-icon>play_arrow</mat-icon>
+      </a>
+      <div class="mx-2"></div>
+      <a
+        mat-mini-fab
+        color="warn"
+        class="button-custom text-white"
+        target="_blank"
+        [href]="video.downloadLink"
+      >
+        <mat-icon>download</mat-icon>
+      </a>
+    </div>
+
+  </div>
+  <div class="flex-grow-1 position-relative overflow-hidden">
+    <div class="content w-100 p-4">
+      <a class="text-white text-decoration-none lh-base" target="_blank" [href]="video.url">
+        <p class="fw-bolder fs-5 mb-4 text-list" [matTooltip]="video.title">
+          {{ video.title }}
+        </p>
+      </a>
+      <div class="d-flex justify-content-between align-items-end">
+        <div class="me-3">
+          <span class="d-block mb-1">
+            {{ video.views }} views
+            <mat-icon class="icon-dott mx-1">
+              fiber_manual_record
+            </mat-icon>
+            {{ video.duration }}
+          </span>
+          <span>{{ video.publishedAt }}</span>
+        </div>
+      </div>
+    </div>
+    <div class="bg-list-custom w-100" [ngStyle]="imageBackground"></div>
+  </div>    
+</div>

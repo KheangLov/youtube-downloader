@@ -1,0 +1,55 @@
+::ng-deep {
+  .card-custom {
+    padding-bottom: 0 !important;
+    max-height: 208px !important;
+
+    p, span {
+      text-shadow: 1px 2px rgba(0, 0, 0, 0.25);
+    }
+  
+    .img-custom {
+      border-radius: 0 !important;
+      position: relative;
+      background-color: #000 !important;
+      height: 200px !important;
+      overflow: hidden;
+      margin: -16px !important;
+      object-fit: contain;
+      transform: scale(1.8);
+      transition: all ease-in-out 0.5s;
+    }
+  
+    .mat-card-content {
+      margin: -200px -16px;
+      padding: 55px 25px;
+      backdrop-filter: blur(4px);
+      transition: all ease-in-out 0.3s;
+    }
+    
+    .icon-dott {
+      font-size: 10px !important;
+      height: 9px !important;
+      width: 10px !important;
+    }
+  
+    .button-custom {
+      opacity: 0;
+      transition: all ease-in-out 0.3s;
+    }
+  
+    &:hover, &:focus {
+      .mat-card-content {
+        background-color: rgba(0, 0, 0, 0.3);
+        backdrop-filter: blur(0);
+      }
+  
+      .button-custom {
+        opacity: 1;
+      }
+
+      .img-custom {
+        transform: scale(1.07);
+      }
+    }
+  }  
+}

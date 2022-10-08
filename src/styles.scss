@@ -39,8 +39,24 @@ $youtube-downloader-material-theme: mat.define-dark-theme((
 
 /* You can add global styles to this file, and also import other style files */
 
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background: #343434; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background: #000; }
 
 h1, h2, h3, h4, h5, h6, span, input, label, div, p, pre, strong, b, textarea, select {
   font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.mat-tooltip {
+  background-color: #000 !important;
+}
+
+::-webkit-scrollbar {
+  -webkit-appearance: none;
+  width: 7px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background-color: #212121;
+  box-shadow: 0px 2px 1px -1px rgb(0 0 0 / 20%), 0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%);
+  -webkit-box-shadow: 0px 2px 1px -1px rgb(0 0 0 / 20%), 0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%);
 }

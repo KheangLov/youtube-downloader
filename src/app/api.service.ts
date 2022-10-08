@@ -1,41 +1,56 @@
-import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import * as _ from 'lodash';
+import { Observable } from "rxjs";
+import { map } from 'rxjs/operators';
 import { environment } from "src/environments/environment";
-
-const httpHeaders = {
-  headers: new HttpHeaders({
-    'Content-Type': 'application/json'
-  })
-};
-
-const API_KEY = 'c1lnxqbe5qFvPUK1fH9jFQjEKdmFZQh2ShfF8P02riUU1dq';
+import { FILE_TYPE, getFormattedView, IVideo } from "./helper";
 
 @Injectable()
 export class ApiService {
   private readonly _apiUrl = environment.apiUrl;
-  private readonly _apiKeepSaveIt = environment.apiKeepSaveIt;
 
   constructor(private readonly _http: HttpClient) {}
 
-  getVideoList() {
-    const _search = this.getSearch();
-    return this._http.get(`${this._apiUrl}/list?search=${_search}`);
+  getVideoList(search: string): Observable<Array<IVideo>> {
+    return this._http.get<Array<IVideo>>(`${this._apiUrl}/list?search=${search}`)
+      .pipe(map(this._onVideoListResponse.bind(this)));
   }
 
-  getKeepIt(url: string) {
-    return this._http.get(`${this._apiKeepSaveIt}?api_key=${API_KEY}&url=${url}`);
+  private _onVideoListResponse({ videos }: any): Array<IVideo> {
+    const _videos: Array<IVideo> = _.map(
+      videos, 
+      ({ id, title, url, views, snippet, duration_raw }: any) => ({
+        id: id.videoId,
+        title,
+        url,
+        duration: duration_raw,
+        durationRaw: this._getDurationRaw(duration_raw),
+        viewsRaw: _.toInteger(views),
+        views: getFormattedView(views),
+        image: snippet.thumbnails.url,
+        publishedAt: snippet.publishedAt,
+        downloadLink: `${environment.apiUrl}/${FILE_TYPE.MP3}?url=${url}`
+      })
+    );
+
+    return _.take(_videos, 16);
   }
 
-  postKeepIt(url: string) {
-    return this._http.post(`${this._apiKeepSaveIt}`, { api_key: API_KEY, url }, httpHeaders);
-  }
-  
-  getSearch(): string {
-    return window.localStorage.getItem('search') as string;
-  }
+  private _getDurationRaw(duration: string): number {
+    const dur = _.reverse(_.split(duration, ':'));
 
-  setSearch(search: string) {
-    window.localStorage.setItem('search', search);
+    return _.reduce(dur, (sum: number, n: string, index: number) => {
+      const _n = !_.isEmpty(n) ? _.toInteger(n) : 0;
+      let num = _n;
+
+      if (index === 1) {
+        num *= 60;
+      } else if (index === 2) {
+        num *= 3600;
+      }
+
+      return sum + num;
+    }, 0);
   }
 }

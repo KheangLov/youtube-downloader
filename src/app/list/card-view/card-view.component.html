@@ -1,0 +1,43 @@
+<mat-card
+  class="p-3 overflow-hidden rounded-0 shadow-none card-custom border-bottom"  
+  [class.border-end]="isAddEndBorder"
+>
+  <img mat-card-image class="img-custom" [src]="video.image" [alt]="video.title">
+  <mat-card-content>
+    <a class="text-white text-decoration-none lh-base" target="_blank" [href]="video.url">
+      <p class="text-truncate fw-bolder fs-5 mb-4" [matTooltip]="video.title">
+        {{ video.title }}
+      </p>
+    </a>
+    <div class="d-flex justify-content-between align-items-end">
+      <div class="me-3">
+        <span class="d-block mb-1">
+          {{ video.views }} views
+          <mat-icon class="icon-dott mx-1">
+            fiber_manual_record
+          </mat-icon>
+          {{ video.duration }}
+        </span>
+        <span>{{ video.publishedAt }}</span>
+      </div>
+      <div class="button-custom">
+        <a
+          mat-icon-button
+          class="text-white"
+          target="_blank"
+          [href]="video.url"
+        >
+          <mat-icon>play_arrow</mat-icon>
+        </a>
+        <a
+          mat-icon-button
+          class="text-white"
+          target="_blank"
+          [href]="video.downloadLink"
+        >
+          <mat-icon>download</mat-icon>
+        </a>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

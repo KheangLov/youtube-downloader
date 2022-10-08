@@ -1,9 +1,9 @@
-<mat-toolbar class="toolbar sticky-top p-0">
-  <div class="container text-center text-md-start">
+<mat-toolbar class="toolbar p-0 shadow-none rounded-0">
+  <div class="container text-center">
     <img src="/assets/icons/icon-192x192.png" alt="icon-192x192.png" class="img-fluid icon me-2">
-    <span>YouTube Downloader</span>
+    <span [ngStyle]="{ letterSpacing: '2px' }">YouTube DOWNLOADER</span>
   </div>
 </mat-toolbar>
-<div class="container">
-  <router-outlet></router-outlet>
+<div class="container-fluid p-0">
+  <app-list></app-list>
 </div>

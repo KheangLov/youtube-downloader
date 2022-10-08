@@ -1,9 +1,6 @@
 import { ComponentFactoryResolver, Directive, HostListener, Input, OnChanges, ViewContainerRef } from '@angular/core';
-import { DEFAULT_VIDEO, IVideo, VIEW_TYPE } from './helper';
+import { CARD_MIN_WIDTH, DEFAULT_VIDEO, IVideo, LIST_MIN_WIDTH, VIEW_TYPE } from './helper';
 import { ListComponent } from './list/list.component';
-
-const CARD_MIN_WIDTH = 576;
-const LIST_MIN_WIDTH = 992;
 
 @Directive({
   selector: '[appView]'

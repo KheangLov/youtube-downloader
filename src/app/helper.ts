@@ -36,6 +36,9 @@ export enum VIEW_TYPE {
   LIST = 'list',
 }
 
+export const CARD_MIN_WIDTH = 576;
+export const LIST_MIN_WIDTH = 992;
+
 export interface IView {
   cols: string;
   icon: string;

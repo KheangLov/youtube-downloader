@@ -1,5 +1,4 @@
 import { ComponentFactoryResolver, Directive, HostListener, Input, OnChanges, ViewContainerRef } from '@angular/core';
-import { environment } from 'src/environments/environment';
 import { DEFAULT_VIDEO, IVideo, VIEW_TYPE } from './helper';
 import { ListComponent } from './list/list.component';
 

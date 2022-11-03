@@ -2,14 +2,13 @@
   <span *ngIf="isEmptyVideo" class="fs-6">
     Sorry no video was found from your search!
   </span>
-  
+
   <div *ngIf="isLoading" class="spinner-wrapper">
     <div class="d-flex justify-content-center align-items-center h-100">
       <mat-progress-spinner
         class="spinner"
         color="warn"
         mode="indeterminate"
-        value="50"
       >
       </mat-progress-spinner>
     </div>

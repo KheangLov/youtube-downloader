@@ -15,15 +15,21 @@
         <mat-icon>play_arrow</mat-icon>
       </a>
       <div class="mx-2"></div>
-      <a
+      <button
         mat-mini-fab
         color="warn"
         class="button-custom text-white"
-        target="_blank"
-        [href]="video.downloadLink"
+        type="button"
+        [hidden]="loading"
+        (click)="download(video)"
       >
         <mat-icon>download</mat-icon>
-      </a>
+      </button>
+      <mat-progress-spinner
+        *ngIf="loading"
+        class="loading"
+        mode="indeterminate"
+      ></mat-progress-spinner>
     </div>
   </div>
   <div class="flex-grow-1 position-relative overflow-hidden">
@@ -47,5 +53,5 @@
       </div>
     </div>
     <div class="bg-list-custom w-100" [ngStyle]="imageBackground"></div>
-  </div>    
+  </div>
 </div>

@@ -1,5 +1,5 @@
 <mat-card
-  class="p-3 overflow-hidden rounded-0 shadow-none card-custom border-bottom"  
+  class="p-3 overflow-hidden rounded-0 shadow-none card-custom border-bottom"
   [class.border-end]="isAddEndBorder"
 >
   <img mat-card-image class="img-custom" [src]="video.image" [alt]="video.title">
@@ -29,14 +29,20 @@
         >
           <mat-icon>play_arrow</mat-icon>
         </a>
-        <a
+        <button
           mat-icon-button
           class="text-white"
-          target="_blank"
-          [href]="video.downloadLink"
+          type="button"
+          [hidden]="loading"
+          (click)="download(video)"
         >
           <mat-icon>download</mat-icon>
-        </a>
+        </button>
+        <mat-progress-spinner
+          *ngIf="loading"
+          class="loading"
+          mode="indeterminate"
+        ></mat-progress-spinner>
       </div>
     </div>
   </mat-card-content>

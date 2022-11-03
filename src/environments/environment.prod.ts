@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://youtube-downloader-api-black.vercel.app',
+  apiUrl: 'https://dark-crow-top-hat.cyclic.app',
   apiKeepSaveIt: 'https://keepsaveit.com/api'
 };

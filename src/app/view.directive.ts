@@ -26,7 +26,7 @@ export class ViewDirective implements OnChanges {
     this.componentRef.instance.index = this._getIndexByType();
   }
 
-  ngOnChanges() {    
+  ngOnChanges() {
     this._loadWidth();
     this._loadViewComponent();
   }

@@ -6,7 +6,23 @@
     p, span {
       text-shadow: 1px 2px rgba(0, 0, 0, 0.25);
     }
-  
+
+    .loading {
+      display: unset;
+      width: 20px !important;
+      height: 20px !important;
+
+      svg {
+        position: relative;
+        width: 20px !important;
+        height: 20px !important;
+
+        circle {
+          stroke: #fff !important;
+        }
+      }
+    }
+
     .img-custom {
       border-radius: 0 !important;
       position: relative;
@@ -18,31 +34,31 @@
       transform: scale(1.8);
       transition: all ease-in-out 0.5s;
     }
-  
+
     .mat-card-content {
       margin: -200px -16px;
       padding: 55px 25px;
       backdrop-filter: blur(4px);
       transition: all ease-in-out 0.3s;
     }
-    
+
     .icon-dott {
       font-size: 10px !important;
       height: 9px !important;
       width: 10px !important;
     }
-  
+
     .button-custom {
       opacity: 0;
       transition: all ease-in-out 0.3s;
     }
-  
+
     &:hover, &:focus {
       .mat-card-content {
         background-color: rgba(0, 0, 0, 0.3);
         backdrop-filter: blur(0);
       }
-  
+
       .button-custom {
         opacity: 1;
       }
@@ -51,5 +67,5 @@
         transform: scale(1.07);
       }
     }
-  }  
+  }
 }

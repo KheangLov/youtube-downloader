@@ -1,10 +1,12 @@
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders, HttpResponse } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import * as _ from 'lodash';
 import { Observable } from "rxjs";
 import { map } from 'rxjs/operators';
 import { environment } from "src/environments/environment";
 import { FILE_TYPE, getFormattedView, IVideo } from "./helper";
+
+const httpHeaders = new HttpHeaders({ 'Accept': '*/*' });
 
 @Injectable()
 export class ApiService {
@@ -17,9 +19,37 @@ export class ApiService {
       .pipe(map(this._onVideoListResponse.bind(this)));
   }
 
+  download(downloadLink: string): Observable<any> {
+    return this._http.get<Blob>(downloadLink, { observe: 'response', responseType: 'blob' as 'json', headers: httpHeaders })
+      .pipe(map(this._getDownload.bind(this)))
+  }
+
+  private _getDownload(response: HttpResponse<Blob>) {
+    const _filename = this._getFileName(response);
+
+    const _binaryData = [] as Array<Blob>;
+    _binaryData.push(response.body as Blob);
+
+    const _downloadLink = document.createElement('a');
+
+    _downloadLink.href = window.URL.createObjectURL(new Blob(_binaryData, { type: 'blob' }));
+    _downloadLink.setAttribute('download', _filename);
+    document.body.appendChild(_downloadLink);
+    _downloadLink.click();
+
+    return false;
+  }
+
+  private _getFileName(response: HttpResponse<Blob>): string {
+    const _cd = response.headers.get('content-disposition');
+    const _filename = _.last(_.split(_cd, 'filename=')) as string;
+
+    return decodeURI(_filename);
+  }
+
   private _onVideoListResponse({ videos }: any): Array<IVideo> {
     const _videos: Array<IVideo> = _.map(
-      videos, 
+      videos,
       ({ id, title, url, views, snippet, duration_raw }: any) => ({
         id: id.videoId,
         title,

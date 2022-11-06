@@ -8,10 +8,9 @@ import { FILE_TYPE, getFormattedView, IVideo } from "./helper";
 
 const httpHeaders = new HttpHeaders({
   'Accept': '*/*',
-  'Access-Control-Allow-Credentials': 'true',
   'Access-Control-Allow-Origin': '*',
   'Access-Control-Allow-Methods': 'GET,OPTIONS,PATCH,DELETE,POST,PUT',
-  'Access-Control-Allow-Headers': 'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version'
+  'Access-Control-Allow-Headers': 'X-CSRF-Token, Authorization, Origin, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version'
 });
 
 @Injectable()
@@ -25,9 +24,15 @@ export class ApiService {
       .pipe(map(this._onVideoListResponse.bind(this)));
   }
 
-  download(downloadLink: string): Observable<any> {
-    return this._http.get<Blob>(downloadLink, { observe: 'response', responseType: 'blob' as 'json', headers: httpHeaders })
-      .pipe(map(this._getDownload.bind(this)))
+  download({ id, type }: IVideo): Observable<any> {
+    return this._http.get<Blob>(
+      `${this._apiUrl}/${type}?videoId=${id}`,
+      {
+        observe: 'response',
+        responseType: 'blob' as 'json',
+        headers: httpHeaders
+      }
+    ).pipe(map(this._getDownload.bind(this)));
   }
 
   private _getDownload(response: HttpResponse<Blob>) {
@@ -66,6 +71,7 @@ export class ApiService {
         views: getFormattedView(views),
         image: snippet.thumbnails.url,
         publishedAt: snippet.publishedAt,
+        type: FILE_TYPE.MP3,
         downloadLink: `${environment.apiUrl}/${FILE_TYPE.MP3}?url=${url}`
       })
     );

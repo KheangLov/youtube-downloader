@@ -16,9 +16,9 @@ export class ViewComponent {
     private readonly _snackBar: MatSnackBar
   ) {}
 
-  download({ downloadLink }: IVideo) {
+  download(video: IVideo) {
     this.loading = true;
-    this._apiService.download(downloadLink)
+    this._apiService.download(video)
       .subscribe(() => {
         this.loading = false;
         this._snackBar.open('Download completed!', 'Close', {

@@ -1,6 +1,11 @@
 import { CardViewComponent } from './list/card-view/card-view.component';
 import { ListViewComponent } from './list/list-view/list-view.component';
 
+export enum FILE_TYPE {
+  MP3 = "mp3",
+  MP4 = "mp4",
+}
+
 export interface IVideo {
   id: string;
   title: string;
@@ -11,6 +16,7 @@ export interface IVideo {
   publishedAt: string;
   views: string;
   viewsRaw: number;
+  type: FILE_TYPE;
   downloadLink: string;
 }
 
@@ -24,6 +30,7 @@ export const DEFAULT_VIDEO: IVideo = {
   publishedAt: '',
   views: '',
   viewsRaw: 0,
+  type: FILE_TYPE.MP3,
   downloadLink: '',
 };
 
@@ -62,11 +69,6 @@ export const LIST_VIEW: IView = {
   tooltip: 'Click to change to card view',
   component: ListViewComponent
 };
-
-export enum FILE_TYPE {
-  MP3 = "mp3",
-  MP4 = "mp4",
-}
 
 export interface IFile {
   type: FILE_TYPE;

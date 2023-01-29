@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
-  apiUrl: 'http://192.168.100.31:3000',
-  apiKeepSaveIt: 'http://192.168.100.31:3000'
+  apiUrl: 'https://192.168.100.31:3535/',
+  apiKeepSaveIt: 'https://192.168.100.31:3535/'
 };

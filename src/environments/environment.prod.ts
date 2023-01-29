@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://dark-crow-top-hat.cyclic.app',
-  apiKeepSaveIt: 'https://keepsaveit.com/api'
+  apiUrl: 'http://192.168.100.31:3000',
+  apiKeepSaveIt: 'http://192.168.100.31:3000'
 };

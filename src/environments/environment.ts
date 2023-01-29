@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'https://dark-crow-top-hat.cyclic.app',
+  apiUrl: 'http://192.168.100.31:3000',
 };
 
 /*

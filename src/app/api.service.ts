@@ -17,11 +17,12 @@ const httpHeaders = new HttpHeaders({
 @Injectable()
 export class ApiService {
   private readonly _apiUrl = environment.apiUrl;
+  private readonly _listUrl = environment.listApiUrl;
 
   constructor(private readonly _http: HttpClient) {}
 
   getVideoList(search: string): Observable<Array<IVideo>> {
-    return this._http.get<Array<IVideo>>(`${this._apiUrl}/list?search=${search}`)
+    return this._http.get<Array<IVideo>>(`${this._listUrl}/list?search=${search}`)
       .pipe(map(this._onVideoListResponse.bind(this)));
   }
 
